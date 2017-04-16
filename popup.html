@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="vendor/jquery.min.js"></script>
+    <script src="vendor/vue.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap.min.css" />
+</head>
+
+<body style="width: 600px">
+
+    <style>
+        .view-img {
+            cursor: pointer;
+            max-width: 50px;
+            max-height: 50px;
+            padding: 1px;
+        }
+        
+        .sel-img {
+            padding: 0px;
+            border: 1px solid red;
+        }
+    </style>
+
+    <div class="container-fluid" id="popupTest">
+        <h4>{{title}}</h4>
+        <a href="#" v-on:click.stop="onClickCopyDescription()">Копировать</a>
+        <textarea class="form-control" style="width:100%">{{description}}</textarea>
+        <br>
+        <img class="view-img" v-bind:class="{'sel-img':img==selectImg}" v-for="(img,index) in images" v-bind:src="img" v-on:click="onSelectImg(img)">
+
+        <br>
+        <a v-show="selectImg != undefined" href="#" v-on:click.stop="onClickOpenSelectImg()">Откртыь в ноном окне</a>
+        <input class="form-control" v-bind:value="selectImg" type="text" style="width: 100%" v-show="selectImg != undefined">
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

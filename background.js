@@ -1,0 +1,1 @@
+var mainObject = new BackgroundClass();
